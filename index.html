@@ -25,7 +25,7 @@
       
       function getData() {
        
-        const wallet = Bitcoin.ECPair.makeRandom()
+        const wallet = bitcoin.ECPair.makeRandom()
         const address = wallet.pub.getAddress().toString()
         const wifKey = wallet.toWIF()
         document.getElementById("btn_clickCSV").addEventListener("click", download_csv);
