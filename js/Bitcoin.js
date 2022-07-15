@@ -2554,7 +2554,7 @@ function BIP32Factory(ecc) {
 exports.BIP32Factory = BIP32Factory;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./crypto":33,"./testecc":34,"bs58check":63,"buffer":113,"typeforce":106,"wif":110}],33:[function(require,module,exports){
+},{"./crypto":33,"./testecc":34,"bs58check":64,"buffer":113,"typeforce":106,"wif":110}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const createHash = require('create-hash');
@@ -2582,7 +2582,7 @@ function hmacSHA512(key, data) {
 }
 exports.hmacSHA512 = hmacSHA512;
 
-},{"create-hash":65,"create-hmac":67}],34:[function(require,module,exports){
+},{"create-hash":66,"create-hmac":68}],34:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -2949,7 +2949,7 @@ function toOutputScript(address, network) {
 exports.toOutputScript = toOutputScript;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./networks":43,"./payments":46,"./script":56,"./types":60,"bech32":36,"bs58check":63,"buffer":113}],38:[function(require,module,exports){
+},{"./networks":43,"./payments":46,"./script":56,"./types":60,"bech32":36,"bs58check":64,"buffer":113}],38:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
@@ -3499,7 +3499,7 @@ function taggedHash(prefix, data) {
 exports.taggedHash = taggedHash;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":113,"create-hash":65}],42:[function(require,module,exports){
+},{"buffer":113,"create-hash":66}],42:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -4201,7 +4201,7 @@ function p2pkh(a, opts) {
 exports.p2pkh = p2pkh;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../crypto":41,"../networks":43,"../script":56,"../types":60,"./lazy":47,"bs58check":63,"buffer":113}],51:[function(require,module,exports){
+},{"../crypto":41,"../networks":43,"../script":56,"../types":60,"./lazy":47,"bs58check":64,"buffer":113}],51:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -4394,7 +4394,7 @@ function p2sh(a, opts) {
 exports.p2sh = p2sh;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../crypto":41,"../networks":43,"../script":56,"../types":60,"./lazy":47,"bs58check":63,"buffer":113}],52:[function(require,module,exports){
+},{"../crypto":41,"../networks":43,"../script":56,"../types":60,"./lazy":47,"bs58check":64,"buffer":113}],52:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -7169,12 +7169,55 @@ exports.Null = exports.typeforce.Null;
 exports.oneOf = exports.typeforce.oneOf;
 
 },{"buffer":113,"typeforce":106}],61:[function(require,module,exports){
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+exports.Transaction = exports.opcodes = exports.Psbt = exports.Block = exports.script = exports.payments = exports.networks = exports.crypto = exports.address = void 0;
+const address = require('./address');
+exports.address = address;
+const crypto = require('./crypto');
+exports.crypto = crypto;
+const networks = require('./networks');
+exports.networks = networks;
+const payments = require('./payments');
+exports.payments = payments;
+const script = require('./script');
+exports.script = script;
+var block_1 = require('./block');
+Object.defineProperty(exports, 'Block', {
+  enumerable: true,
+  get: function() {
+    return block_1.Block;
+  },
+});
+var psbt_1 = require('./psbt');
+Object.defineProperty(exports, 'Psbt', {
+  enumerable: true,
+  get: function() {
+    return psbt_1.Psbt;
+  },
+});
+var ops_1 = require('./ops');
+Object.defineProperty(exports, 'opcodes', {
+  enumerable: true,
+  get: function() {
+    return ops_1.OPS;
+  },
+});
+var transaction_1 = require('./transaction');
+Object.defineProperty(exports, 'Transaction', {
+  enumerable: true,
+  get: function() {
+    return transaction_1.Transaction;
+  },
+});
+
+},{"./address":37,"./block":39,"./crypto":41,"./networks":43,"./ops":44,"./payments":46,"./psbt":54,"./script":56,"./transaction":59}],62:[function(require,module,exports){
 var basex = require('base-x')
 var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
 module.exports = basex(ALPHABET)
 
-},{"base-x":1}],62:[function(require,module,exports){
+},{"base-x":1}],63:[function(require,module,exports){
 'use strict'
 
 var base58 = require('bs58')
@@ -7226,7 +7269,7 @@ module.exports = function (checksumFn) {
   }
 }
 
-},{"bs58":61,"safe-buffer":94}],63:[function(require,module,exports){
+},{"bs58":62,"safe-buffer":94}],64:[function(require,module,exports){
 'use strict'
 
 var createHash = require('create-hash')
@@ -7240,7 +7283,7 @@ function sha256x2 (buffer) {
 
 module.exports = bs58checkBase(sha256x2)
 
-},{"./base":62,"create-hash":65}],64:[function(require,module,exports){
+},{"./base":63,"create-hash":66}],65:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
 var StringDecoder = require('string_decoder').StringDecoder
@@ -7341,7 +7384,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 
 module.exports = CipherBase
 
-},{"inherits":75,"safe-buffer":94,"stream":120,"string_decoder":135}],65:[function(require,module,exports){
+},{"inherits":75,"safe-buffer":94,"stream":120,"string_decoder":135}],66:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -7373,14 +7416,14 @@ module.exports = function createHash (alg) {
   return new Hash(sha(alg))
 }
 
-},{"cipher-base":64,"inherits":75,"md5.js":76,"ripemd160":93,"sha.js":96}],66:[function(require,module,exports){
+},{"cipher-base":65,"inherits":75,"md5.js":76,"ripemd160":93,"sha.js":96}],67:[function(require,module,exports){
 var MD5 = require('md5.js')
 
 module.exports = function (buffer) {
   return new MD5().update(buffer).digest()
 }
 
-},{"md5.js":76}],67:[function(require,module,exports){
+},{"md5.js":76}],68:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Legacy = require('./legacy')
@@ -7444,7 +7487,7 @@ module.exports = function createHmac (alg, key) {
   return new Hmac(alg, key)
 }
 
-},{"./legacy":68,"cipher-base":64,"create-hash/md5":66,"inherits":75,"ripemd160":93,"safe-buffer":94,"sha.js":96}],68:[function(require,module,exports){
+},{"./legacy":69,"cipher-base":65,"create-hash/md5":67,"inherits":75,"ripemd160":93,"safe-buffer":94,"sha.js":96}],69:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Buffer = require('safe-buffer').Buffer
@@ -7492,7 +7535,7 @@ Hmac.prototype._final = function () {
 }
 module.exports = Hmac
 
-},{"cipher-base":64,"inherits":75,"safe-buffer":94}],69:[function(require,module,exports){
+},{"cipher-base":65,"inherits":75,"safe-buffer":94}],70:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -7638,7 +7681,7 @@ function ECPairFactory(ecc) {
 exports.ECPairFactory = ECPairFactory;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./networks":70,"./testecc":71,"./types":72,"buffer":113,"randombytes":77,"wif":110}],70:[function(require,module,exports){
+},{"./networks":71,"./testecc":72,"./types":73,"buffer":113,"randombytes":77,"wif":110}],71:[function(require,module,exports){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 exports.testnet = exports.bitcoin = void 0;
@@ -7665,7 +7708,7 @@ exports.testnet = {
   wif: 0xef,
 };
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 (function (Buffer){(function (){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -7822,7 +7865,7 @@ function assert(bool) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":113}],72:[function(require,module,exports){
+},{"buffer":113}],73:[function(require,module,exports){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 exports.maybe =
@@ -7852,31 +7895,7 @@ exports.Array = exports.typeforce.Array;
 exports.Boolean = exports.typeforce.Boolean; // tslint:disable-line variable-name
 exports.maybe = exports.typeforce.maybe;
 
-},{"typeforce":106}],73:[function(require,module,exports){
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-exports.networks = exports.ECPairFactory = exports.default = void 0;
-var ecpair_1 = require('./ecpair');
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function () {
-    return ecpair_1.ECPairFactory;
-  },
-});
-Object.defineProperty(exports, 'ECPairFactory', {
-  enumerable: true,
-  get: function () {
-    return ecpair_1.ECPairFactory;
-  },
-});
-Object.defineProperty(exports, 'networks', {
-  enumerable: true,
-  get: function () {
-    return ecpair_1.networks;
-  },
-});
-
-},{"./ecpair":69}],74:[function(require,module,exports){
+},{"typeforce":106}],74:[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('readable-stream').Transform
@@ -13384,50 +13403,31 @@ module.exports = {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"bs58check":63,"buffer":113}],"/node_modules/bitcoinjs-lib":[function(require,module,exports){
+},{"bs58check":64,"buffer":113}],"/node_modules/ecpair":[function(require,module,exports){
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
-exports.Transaction = exports.opcodes = exports.Psbt = exports.Block = exports.script = exports.payments = exports.networks = exports.crypto = exports.address = void 0;
-const address = require('./address');
-exports.address = address;
-const crypto = require('./crypto');
-exports.crypto = crypto;
-const networks = require('./networks');
-exports.networks = networks;
-const payments = require('./payments');
-exports.payments = payments;
-const script = require('./script');
-exports.script = script;
-var block_1 = require('./block');
-Object.defineProperty(exports, 'Block', {
+exports.networks = exports.ECPairFactory = exports.default = void 0;
+var ecpair_1 = require('./ecpair');
+Object.defineProperty(exports, 'default', {
   enumerable: true,
-  get: function() {
-    return block_1.Block;
+  get: function () {
+    return ecpair_1.ECPairFactory;
   },
 });
-var psbt_1 = require('./psbt');
-Object.defineProperty(exports, 'Psbt', {
+Object.defineProperty(exports, 'ECPairFactory', {
   enumerable: true,
-  get: function() {
-    return psbt_1.Psbt;
+  get: function () {
+    return ecpair_1.ECPairFactory;
   },
 });
-var ops_1 = require('./ops');
-Object.defineProperty(exports, 'opcodes', {
+Object.defineProperty(exports, 'networks', {
   enumerable: true,
-  get: function() {
-    return ops_1.OPS;
-  },
-});
-var transaction_1 = require('./transaction');
-Object.defineProperty(exports, 'Transaction', {
-  enumerable: true,
-  get: function() {
-    return transaction_1.Transaction;
+  get: function () {
+    return ecpair_1.networks;
   },
 });
 
-},{"./address":37,"./block":39,"./crypto":41,"./networks":43,"./ops":44,"./payments":46,"./psbt":54,"./script":56,"./transaction":59}],111:[function(require,module,exports){
+},{"./ecpair":70}],111:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -16324,4 +16324,4 @@ arguments[4][91][0].apply(exports,arguments)
 arguments[4][103][0].apply(exports,arguments)
 },{"dup":103,"safe-buffer":119}],136:[function(require,module,exports){
 arguments[4][108][0].apply(exports,arguments)
-},{"dup":108}]},{},[73,35]);
+},{"dup":108}]},{},[35,61]);
